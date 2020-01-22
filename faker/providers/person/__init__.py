@@ -99,3 +99,11 @@ class Provider(BaseProvider):
         if hasattr(self, 'suffixes_female'):
             return self.random_element(self.suffixes_female)
         return self.suffix()
+
+    def age(self):
+        if hasattr(self, 'age_range'):
+            return \
+                self.generator.random.randint(
+                    self.age_range.start,
+                    self.age_range.stop)
+        return self.generator.random.randint(1, 100)
