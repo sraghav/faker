@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+
 from collections import OrderedDict
 
 from ..en import Provider as AddressProvider
@@ -330,16 +331,18 @@ class Provider(AddressProvider):
         '{{building_number}} {{street_name}} {{secondary_address}}',
     )
 
+    # removed newlines, replaced them with commas
     address_formats = (
-        "{{street_address}}\n{{city}}, {{state_abbr}} {{postcode}}",
+        "{{street_address}}, {{city}}, {{state_abbr}} {{postcode}}",
     )
 
+    # removed newlines, replaced them with commas
     address_formats = OrderedDict((
-        ("{{street_address}}\n{{city}}, {{state_abbr}} {{postcode}}", 25),
+        ("{{street_address}}, {{city}}, {{state_abbr}} {{postcode}}", 25),
         #  military address formatting.
-        ("{{military_apo}}\nAPO {{military_state}} {{postcode}}", 1),
-        ("{{military_ship}} {{last_name}}\nFPO {{military_state}} {{postcode}}", 1),
-        ("{{military_dpo}}\nDPO {{military_state}} {{postcode}}", 1),
+        ("{{military_apo}}, APO {{military_state}} {{postcode}}", 1),
+        ("{{military_ship}} {{last_name}}, FPO {{military_state}} {{postcode}}", 1),
+        ("{{military_dpo}}, DPO {{military_state}} {{postcode}}", 1),
     ))
 
     secondary_address_formats = ('Apt. ###', 'Suite ###')

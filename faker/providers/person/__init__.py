@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 
 from .. import BaseProvider
 
-
 localized = True
 
 
@@ -106,4 +105,4 @@ class Provider(BaseProvider):
                 self.generator.random.randint(
                     self.age_range.start,
                     self.age_range.stop)
-        return self.generator.random.randint(1, 100)
+        return self.age()
