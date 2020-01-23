@@ -139,6 +139,7 @@ class BaseProvider(object):
         else:
             return ''
 
+
     def random_number(self, digits=None, fix_len=False):
         """
         Returns a random number with 1 digit (default, when digits==None),

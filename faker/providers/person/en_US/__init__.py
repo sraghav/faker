@@ -1778,3 +1778,5 @@ class Provider(PersonProvider):
         ('PhD', 0.1),
         ('DVM', 0.1),
     ))
+
+    age_range = range(1,121)

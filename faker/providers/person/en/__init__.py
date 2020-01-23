@@ -1161,3 +1161,5 @@ class Provider(PersonProvider):
     suffixes_female = ('MD', 'DDS', 'PhD', 'DVM')
     suffixes_male = ('Jr.', 'Sr.', 'I', 'II', 'III',
                      'IV', 'V', 'MD', 'DDS', 'PhD', 'DVM')
+
+    age_range = range(1,121)
