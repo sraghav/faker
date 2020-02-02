@@ -4,15 +4,17 @@ from __future__ import unicode_literals
 
 import random as random_module
 import re
+
 import six
 
-_re_token = re.compile(r'\{\{(\s?)(\w+)(\s?)\}\}')
+_re_token1 = re.compile(r'\{\{(\s?)(\w+)(\s?)\}\}')
+_re_token = re.compile(r'\{\{(\s?)(\w+)(\s?)((\()?\d*,?\d*(\))?)\}\}')
+
 random = random_module.Random()
 mod_random = random  # compat with name released in 0.8
 
 
 class Generator(object):
-
     __config = {}
 
     def __init__(self, **config):
@@ -105,7 +107,12 @@ class Generator(object):
         Replaces tokens (like '{{ tokenName }}' or '{{tokenName}}')
         with the result from the token method call.
         """
-        return _re_token.sub(self.__format_token, text)
+        specLoc = text.find("(")
+        if specLoc >= 0:
+            text1 = text[1:specLoc]
+        else:
+            text1 = text
+        return _re_token.sub(self.__format_token, text1)
 
     def __format_token(self, matches):
         formatter = list(matches.groups())
